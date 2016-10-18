@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		1BEBEC151DB5DDC5001BA2E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBEC141DB5DDC5001BA2E4 /* AppDelegate.swift */; };
-		1BEBEC171DB5DDC5001BA2E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBEC161DB5DDC5001BA2E4 /* ViewController.swift */; };
 		1BEBEC1A1DB5DDC5001BA2E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBEC181DB5DDC5001BA2E4 /* Main.storyboard */; };
 		1BEBEC1C1DB5DDC5001BA2E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBEC1B1DB5DDC5001BA2E4 /* Assets.xcassets */; };
 		1BEBEC1F1DB5DDC5001BA2E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBEC1D1DB5DDC5001BA2E4 /* LaunchScreen.storyboard */; };
+		1BEBEC271DB5DF6D001BA2E4 /* TrackTVTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBEC261DB5DF6D001BA2E4 /* TrackTVTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1BEBEC111DB5DDC5001BA2E4 /* TrackTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BEBEC141DB5DDC5001BA2E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1BEBEC161DB5DDC5001BA2E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1BEBEC191DB5DDC5001BA2E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1BEBEC1B1DB5DDC5001BA2E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1BEBEC1E1DB5DDC5001BA2E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1BEBEC201DB5DDC5001BA2E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BEBEC261DB5DF6D001BA2E4 /* TrackTVTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTVTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +55,11 @@
 			isa = PBXGroup;
 			children = (
 				1BEBEC141DB5DDC5001BA2E4 /* AppDelegate.swift */,
-				1BEBEC161DB5DDC5001BA2E4 /* ViewController.swift */,
 				1BEBEC181DB5DDC5001BA2E4 /* Main.storyboard */,
 				1BEBEC1B1DB5DDC5001BA2E4 /* Assets.xcassets */,
 				1BEBEC1D1DB5DDC5001BA2E4 /* LaunchScreen.storyboard */,
 				1BEBEC201DB5DDC5001BA2E4 /* Info.plist */,
+				1BEBEC261DB5DF6D001BA2E4 /* TrackTVTableViewController.swift */,
 			);
 			path = TrackTV;
 			sourceTree = "<group>";
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1BEBEC171DB5DDC5001BA2E4 /* ViewController.swift in Sources */,
+				1BEBEC271DB5DF6D001BA2E4 /* TrackTVTableViewController.swift in Sources */,
 				1BEBEC151DB5DDC5001BA2E4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
