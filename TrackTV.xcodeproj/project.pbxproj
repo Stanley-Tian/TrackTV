@@ -12,6 +12,8 @@
 		1BEBEC1C1DB5DDC5001BA2E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBEC1B1DB5DDC5001BA2E4 /* Assets.xcassets */; };
 		1BEBEC1F1DB5DDC5001BA2E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBEC1D1DB5DDC5001BA2E4 /* LaunchScreen.storyboard */; };
 		1BEBEC271DB5DF6D001BA2E4 /* TrackTVTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBEC261DB5DF6D001BA2E4 /* TrackTVTableViewController.swift */; };
+		1BEBEC291DB5E502001BA2E4 /* TrackTVTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBEC281DB5E502001BA2E4 /* TrackTVTableViewCell.swift */; };
+		1BEBEC2B1DB5E530001BA2E4 /* AddTVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBEC2A1DB5E530001BA2E4 /* AddTVViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		1BEBEC1E1DB5DDC5001BA2E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1BEBEC201DB5DDC5001BA2E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1BEBEC261DB5DF6D001BA2E4 /* TrackTVTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTVTableViewController.swift; sourceTree = "<group>"; };
+		1BEBEC281DB5E502001BA2E4 /* TrackTVTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackTVTableViewCell.swift; sourceTree = "<group>"; };
+		1BEBEC2A1DB5E530001BA2E4 /* AddTVViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTVViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				1BEBEC1D1DB5DDC5001BA2E4 /* LaunchScreen.storyboard */,
 				1BEBEC201DB5DDC5001BA2E4 /* Info.plist */,
 				1BEBEC261DB5DF6D001BA2E4 /* TrackTVTableViewController.swift */,
+				1BEBEC281DB5E502001BA2E4 /* TrackTVTableViewCell.swift */,
+				1BEBEC2A1DB5E530001BA2E4 /* AddTVViewController.swift */,
 			);
 			path = TrackTV;
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1BEBEC271DB5DF6D001BA2E4 /* TrackTVTableViewController.swift in Sources */,
+				1BEBEC291DB5E502001BA2E4 /* TrackTVTableViewCell.swift in Sources */,
+				1BEBEC2B1DB5E530001BA2E4 /* AddTVViewController.swift in Sources */,
 				1BEBEC151DB5DDC5001BA2E4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
