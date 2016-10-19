@@ -10,6 +10,14 @@ import UIKit
 
 class TrackTVTableViewCell: UITableViewCell {
 
+    
+    @IBOutlet weak var coverImageView: UIImageView!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var seasonLabel: UILabel!
+    
+    @IBOutlet weak var episodeToWatchLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

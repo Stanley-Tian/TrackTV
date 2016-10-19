@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B5326471DB5FA82009232FB /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5326461DB5FA82009232FB /* TV.swift */; };
+		1B5326491DB61036009232FB /* MainDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5326481DB61036009232FB /* MainDatabase.swift */; };
+		1B53264E1DB638E0009232FB /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B53264D1DB638E0009232FB /* Tools.swift */; };
 		1BEBEC151DB5DDC5001BA2E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBEC141DB5DDC5001BA2E4 /* AppDelegate.swift */; };
 		1BEBEC1A1DB5DDC5001BA2E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBEC181DB5DDC5001BA2E4 /* Main.storyboard */; };
 		1BEBEC1C1DB5DDC5001BA2E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBEC1B1DB5DDC5001BA2E4 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		1B5326461DB5FA82009232FB /* TV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
+		1B5326481DB61036009232FB /* MainDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDatabase.swift; sourceTree = "<group>"; };
+		1B53264D1DB638E0009232FB /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		1BEBEC111DB5DDC5001BA2E4 /* TrackTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BEBEC141DB5DDC5001BA2E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BEBEC191DB5DDC5001BA2E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,6 +50,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B53264A1DB6103C009232FB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1B5326481DB61036009232FB /* MainDatabase.swift */,
+				1B5326461DB5FA82009232FB /* TV.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1B7D368C1DB70A070085A230 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1BEBEC261DB5DF6D001BA2E4 /* TrackTVTableViewController.swift */,
+				1BEBEC281DB5E502001BA2E4 /* TrackTVTableViewCell.swift */,
+				1BEBEC2A1DB5E530001BA2E4 /* AddTVViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		1B7D368D1DB70A1A0085A230 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1BEBEC1D1DB5DDC5001BA2E4 /* LaunchScreen.storyboard */,
+				1BEBEC181DB5DDC5001BA2E4 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		1BEBEC081DB5DDC4001BA2E4 = {
 			isa = PBXGroup;
 			children = (
@@ -67,15 +99,13 @@
 		1BEBEC131DB5DDC5001BA2E4 /* TrackTV */ = {
 			isa = PBXGroup;
 			children = (
+				1B7D368D1DB70A1A0085A230 /* View */,
+				1B7D368C1DB70A070085A230 /* Controller */,
+				1B53264A1DB6103C009232FB /* Model */,
 				1BEBEC141DB5DDC5001BA2E4 /* AppDelegate.swift */,
-				1BEBEC181DB5DDC5001BA2E4 /* Main.storyboard */,
 				1BEBEC1B1DB5DDC5001BA2E4 /* Assets.xcassets */,
-				1BEBEC1D1DB5DDC5001BA2E4 /* LaunchScreen.storyboard */,
 				1BEBEC201DB5DDC5001BA2E4 /* Info.plist */,
-				1BEBEC261DB5DF6D001BA2E4 /* TrackTVTableViewController.swift */,
-				1BEBEC281DB5E502001BA2E4 /* TrackTVTableViewCell.swift */,
-				1BEBEC2A1DB5E530001BA2E4 /* AddTVViewController.swift */,
-				1B5326461DB5FA82009232FB /* TV.swift */,
+				1B53264D1DB638E0009232FB /* Tools.swift */,
 			);
 			path = TrackTV;
 			sourceTree = "<group>";
@@ -224,8 +254,10 @@
 				1BEBEC271DB5DF6D001BA2E4 /* TrackTVTableViewController.swift in Sources */,
 				1BEBEC291DB5E502001BA2E4 /* TrackTVTableViewCell.swift in Sources */,
 				1BEBEC2B1DB5E530001BA2E4 /* AddTVViewController.swift in Sources */,
+				1B5326491DB61036009232FB /* MainDatabase.swift in Sources */,
 				1B5326471DB5FA82009232FB /* TV.swift in Sources */,
 				1BEBEC151DB5DDC5001BA2E4 /* AppDelegate.swift in Sources */,
+				1B53264E1DB638E0009232FB /* Tools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

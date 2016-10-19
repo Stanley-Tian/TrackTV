@@ -10,6 +10,7 @@ import UIKit
 
 class TrackTVTableViewController: UITableViewController {
 
+    var TVs:[TV]!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,8 +19,14 @@ class TrackTVTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        TVs = TVTable.instance.getTVs()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        TVs = TVTable.instance.getTVs()
+        self.tableView.reloadData()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -29,23 +36,27 @@ class TrackTVTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return TVs.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TrackTVTableViewCell
+        cell.coverImageView.image = TVs[indexPath.row].cover
+        cell.nameLabel.text = TVs[indexPath.row].name
+        cell.seasonLabel.text = "第\(TVs[indexPath.row].season!)季"
+        cell.episodeToWatchLabel.text = "第\(TVs[indexPath.row].episodeToWatch!)集"
+        //cell.
         // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
