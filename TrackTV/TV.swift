@@ -13,15 +13,15 @@ class TV {
     var name:String!
     var season:Int?
     var episodeToWatch:Int!
-    var id:String!
+    let id:String?
     var cover:UIImage?
     
-    init(id:String, name:String, season:Int, episodeToWatch:Int, cover:UIImage?) {
+    init(id:String?, name:String, season:Int, episodeToWatch:Int, cover:UIImage?) {
         self.name = name
         self.season = season
         self.episodeToWatch = episodeToWatch
         self.cover = cover
-        self.id = UUID().uuidString
+        self.id = id // 生成uuid的位置应唯一，不然容易混乱
     }
 }
 
@@ -71,7 +71,7 @@ class TVTable:MainDatabase {
     }
     func addAnTV(tv:TV) -> Int64?{
         do {
-            let insert = tableTV.insert(self.id <- tv.id,
+            let insert = tableTV.insert(self.id <- UUID().uuidString,
                                         self.name <- tv.name,
                                         self.season <- Int64(tv.season!),
                                         self.episodeToWatch <- Int64(tv.episodeToWatch!),
@@ -99,6 +99,22 @@ class TVTable:MainDatabase {
         return TVs
     }
     // MARK:UPDATE
+    func updateAnTV(updatedTV:TV) -> Bool{
+        let TVToUpdate = tableTV.filter(id == updatedTV.id!)
+        
+        do {
+            let update = TVToUpdate.update(episodeToWatch <- Int64(updatedTV.episodeToWatch!))
+            if try db!.run(update) > 0 {
+                return true
+            }else{
+                return false
+            }
+            
+        } catch {
+            print("更新数据失败")
+            return false
+        }
+    }
     /*
     func updateAnTV(byId TVId:String, newName:String, newBrief:String, newPortrait:UIImage, newImage:UIImage) -> Bool{
         let TVToUpdate = tableTV.filter(id == TVId)
@@ -132,7 +148,7 @@ class TVTable:MainDatabase {
                 return false
             }
         } catch {
-            print("删除员工失败！")
+            print("删除uuju失败！")
             return false
         }
     }

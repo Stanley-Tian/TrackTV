@@ -19,10 +19,16 @@ class TrackTVTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
+        getTVs()
+        //TVs = TVTable.instance.getTVs()
+        print(TVs)
+    }
+    private func getTVs(){
         TVs = TVTable.instance.getTVs()
     }
-
+    private func refreshTVs(){
+        getTVs()
+    }
     override func viewWillAppear(_ animated: Bool) {
         TVs = TVTable.instance.getTVs()
         self.tableView.reloadData()
@@ -57,7 +63,9 @@ class TrackTVTableViewController: UITableViewController {
         return cell
     }
     
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -66,7 +74,7 @@ class TrackTVTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -76,7 +84,32 @@ class TrackTVTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let addOneEpisodeAction = UITableViewRowAction(style: .default, title: "该看+1", handler: {(action,indexPath) -> Void in
+            let currentTV = self.TVs[indexPath.row]
+            currentTV.episodeToWatch! += 1
+            _ = TVTable.instance.updateAnTV(updatedTV: currentTV)// update the database
+            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
+        })
+        let minusOneEpisodeAction = UITableViewRowAction(style: .default, title: "该看-1", handler: {(action,indexPath) -> Void in
+            let currentTV = self.TVs[indexPath.row]
+            currentTV.episodeToWatch! -= 1
+            _ = TVTable.instance.updateAnTV(updatedTV: currentTV)// update the database
+            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
+
+        })
+        let deleteTVAction = UITableViewRowAction(style: .destructive, title: "删除", handler: {(action,indexPath) -> Void in
+            let currentTV = self.TVs[indexPath.row]
+            _ = TVTable.instance.deleteAnTV(byId: currentTV.id!)
+            self.TVs.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+            })
+        addOneEpisodeAction.backgroundColor = .green
+        minusOneEpisodeAction.backgroundColor = .blue
+        
+        return [addOneEpisodeAction,minusOneEpisodeAction,deleteTVAction]
+    }
 
     /*
     // Override to support rearranging the table view.
@@ -104,7 +137,4 @@ class TrackTVTableViewController: UITableViewController {
     
     @IBAction func unwindFromSave(segue:UIStoryboardSegue){}
     @IBAction func unwindFromCancel(segue:UIStoryboardSegue){}
-
- 
-
 }

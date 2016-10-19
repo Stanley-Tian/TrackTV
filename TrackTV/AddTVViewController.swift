@@ -43,7 +43,7 @@ UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        newTV = TV(id: UUID().uuidString, name: "", season: 0, episodeToWatch: 0, cover: nil);
+        newTV = TV(id:nil, name: "", season: 0, episodeToWatch: 0, cover: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
