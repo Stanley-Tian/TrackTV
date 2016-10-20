@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nfe-lh-qjf" id="zPv-KK-YgM">
-                                    <frame key="frameInset" width="375" height="91"/>
+                                    <frame key="frameInset" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rVV-vs-AYy">
@@ -90,12 +90,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="美美爱追剧" id="NtG-xd-QdY">
+                        <barButtonItem key="leftBarButtonItem" title="编辑" style="plain" id="pEd-GC-r2n">
+                            <connections>
+                                <action selector="startEditing:" destination="uFR-tn-0tI" id="p7i-i6-kgb"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="QsO-FI-aPF">
                             <connections>
                                 <segue destination="Fua-J2-ZkH" kind="presentation" id="ADM-uC-NNr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="editBarButtonItem" destination="pEd-GC-r2n" id="KtF-7x-b3D"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cy8-iG-u5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

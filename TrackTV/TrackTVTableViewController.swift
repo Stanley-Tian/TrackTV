@@ -11,6 +11,17 @@ import UIKit
 class TrackTVTableViewController: UITableViewController {
 
     var TVs:[TV]!
+    
+    @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
+    @IBAction func startEditing(_ sender: UIBarButtonItem) {
+        self.isEditing = !self.isEditing
+        
+        if self.isEditing {
+            editBarButtonItem.title = "完成"
+        }else {
+            editBarButtonItem.title = "编辑"
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -118,13 +129,18 @@ class TrackTVTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        var itemToMove = TVs[sourceIndexPath.row]
+        TVs.remove(at: sourceIndexPath.row)
+        TVs.insert(itemToMove, at: destinationIndexPath.row)
+    }
 
     
     // MARK: - Navigation
