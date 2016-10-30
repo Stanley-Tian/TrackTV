@@ -15,13 +15,15 @@ class TV {
     var episodeToWatch:Int!
     let id:String?
     var cover:UIImage?
+    var showTime:String?
     
-    init(id:String?, name:String, season:Int, episodeToWatch:Int, cover:UIImage?) {
+    init(id:String?, name:String, season:Int, episodeToWatch:Int, cover:UIImage?, showTime:String?) {
         self.name = name
         self.season = season
         self.episodeToWatch = episodeToWatch
         self.cover = cover
         self.id = id // 生成uuid的位置应唯一，不然容易混乱
+        self.showTime = showTime
     }
 }
 
@@ -35,6 +37,7 @@ class TVTable:MainDatabase {
     private var season = Expression<Int64>("season")
     private var episodeToWatch = Expression<Int64>("episodeToWatch")
     private var cover = Expression<UIImage>("cover")
+    private var showTime = Expression<String?>("showTime")
     
     override func createTable() {
         do {
@@ -50,9 +53,18 @@ class TVTable:MainDatabase {
             print("创建table失败")
         }
     }
-    
+    // 升级表
+    func updateTable(){
+        do{
+            try super.db!.run(tableTV.addColumn(showTime))
+            //try super.db!.run(tableTV.addColumn(showTime))
+            print("增加列数据成功")
+        } catch {
+            print("增加列数据失败")
+        }
+    }
     // - MARK:CRUD -
-    // CRUD
+
     // MARK:CREATE
     func addAnTV(name:String, season:Int64, episodeToWatch:Int64, cover:UIImage) -> Int64?{
         do {
@@ -75,7 +87,8 @@ class TVTable:MainDatabase {
                                         self.name <- tv.name,
                                         self.season <- Int64(tv.season!),
                                         self.episodeToWatch <- Int64(tv.episodeToWatch!),
-                                        self.cover <- tv.cover!)
+                                        self.cover <- tv.cover!,
+                                        self.showTime <- tv.showTime)
             let rowid = try db!.run(insert)
             
             return rowid
@@ -91,7 +104,9 @@ class TVTable:MainDatabase {
         
         do {
             for row in try db!.prepare(self.tableTV){
-                TVs.append(TV(id: row[id], name: row[name], season: Int(row[season]), episodeToWatch: Int(row[episodeToWatch]), cover: row.get(cover)))
+           //     TVs.append(TV(id: row[id], name: row[name], season: Int(row[season]), episodeToWatch: Int(row[episodeToWatch]), cover: row.get(cover)), showTime: row[showTime] )
+                TVs.append(TV(id: row[id], name: row[name], season: Int(row[season]), episodeToWatch: Int(row[episodeToWatch]), cover: row.get(cover), showTime: row[showTime] ))
+
             }
         }catch{
             print("获取数据失败")

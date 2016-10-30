@@ -29,6 +29,9 @@ UINavigationControllerDelegate {
         self.newTV.episodeToWatch = Int(sender.text ?? "0")
     }
 
+    @IBAction func TVshowTimeEditDitEnd(_ sender: UITextField) {
+        self.newTV.showTime = sender.text
+    }
     @IBAction func TVCoverTapped(_ sender: UITapGestureRecognizer) {
         //print("tapped")
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
@@ -43,7 +46,7 @@ UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        newTV = TV(id:nil, name: "", season: 0, episodeToWatch: 0, cover: nil)
+        newTV = TV(id:nil, name: "", season: 0, episodeToWatch: 0, cover: nil, showTime: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

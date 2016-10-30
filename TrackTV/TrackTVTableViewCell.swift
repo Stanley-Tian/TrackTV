@@ -18,6 +18,9 @@ class TrackTVTableViewCell: UITableViewCell {
     @IBOutlet weak var seasonLabel: UILabel!
     
     @IBOutlet weak var episodeToWatchLabel: UILabel!
+    
+    @IBOutlet weak var showTimeLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

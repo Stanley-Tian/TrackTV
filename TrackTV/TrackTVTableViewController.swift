@@ -9,31 +9,34 @@
 import UIKit
 
 class TrackTVTableViewController: UITableViewController {
-
-    var TVs:[TV]!
     
+    var TVs:[TV]!
+    var userEditing = false
     @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
-    @IBAction func startEditing(_ sender: UIBarButtonItem) {
-        self.isEditing = !self.isEditing
-        
-        if self.isEditing {
-            editBarButtonItem.title = "完成"
-        }else {
+    @IBAction func startEditing(_ sender: UIBarButtonItem) {       
+        if self.tableView.isEditing == true {
             editBarButtonItem.title = "编辑"
+            self.tableView.setEditing(false, animated: true)
+            userEditing = false
+        }else {
+            editBarButtonItem.title = "完成"
+            self.tableView.setEditing(true, animated: true)
+            userEditing = true
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         getTVs()
         //TVs = TVTable.instance.getTVs()
-        print(TVs)
-    }
+        //print(TVs)
+        
+        }
     private func getTVs(){
         TVs = TVTable.instance.getTVs()
     }
@@ -48,19 +51,19 @@ class TrackTVTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return TVs.count
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TrackTVTableViewCell
@@ -68,23 +71,28 @@ class TrackTVTableViewController: UITableViewController {
         cell.nameLabel.text = TVs[indexPath.row].name
         cell.seasonLabel.text = "第\(TVs[indexPath.row].season!)季"
         cell.episodeToWatchLabel.text = "第\(TVs[indexPath.row].episodeToWatch!)集"
-        //cell.
+        if TVs[indexPath.row].showTime == nil{
+            cell.showTimeLabel.text = "未知"
+        }else{
+            cell.showTimeLabel.text = "\(TVs[indexPath.row].showTime!)"
+            
+        }
         // Configure the cell...
-
+        
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//    }
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -93,42 +101,47 @@ class TrackTVTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let addOneEpisodeAction = UITableViewRowAction(style: .default, title: "该看+1", handler: {(action,indexPath) -> Void in
-            let currentTV = self.TVs[indexPath.row]
-            currentTV.episodeToWatch! += 1
-            _ = TVTable.instance.updateAnTV(updatedTV: currentTV)// update the database
-            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
-        })
-        let minusOneEpisodeAction = UITableViewRowAction(style: .default, title: "该看-1", handler: {(action,indexPath) -> Void in
-            let currentTV = self.TVs[indexPath.row]
-            currentTV.episodeToWatch! -= 1
-            _ = TVTable.instance.updateAnTV(updatedTV: currentTV)// update the database
-            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
-
-        })
-        let deleteTVAction = UITableViewRowAction(style: .destructive, title: "删除", handler: {(action,indexPath) -> Void in
-            let currentTV = self.TVs[indexPath.row]
-            _ = TVTable.instance.deleteAnTV(byId: currentTV.id!)
-            self.TVs.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+        print("self editing: \(self.isEditing)")
+        if self.userEditing == true {
+            let deleteTVAction = UITableViewRowAction(style: .destructive, title: "删除", handler: {(action,indexPath) -> Void in
+                let currentTV = self.TVs[indexPath.row]
+                _ = TVTable.instance.deleteAnTV(byId: currentTV.id!)
+                self.TVs.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             })
-        addOneEpisodeAction.backgroundColor = .green
-        minusOneEpisodeAction.backgroundColor = .blue
-        
-        return [addOneEpisodeAction,minusOneEpisodeAction,deleteTVAction]
+            return [deleteTVAction]
+        }else{
+            let addOneEpisodeAction = UITableViewRowAction(style: .default, title: "该看+1", handler: {(action,indexPath) -> Void in
+                let currentTV = self.TVs[indexPath.row]
+                currentTV.episodeToWatch! += 1
+                _ = TVTable.instance.updateAnTV(updatedTV: currentTV)// update the database
+                self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
+            })
+            let minusOneEpisodeAction = UITableViewRowAction(style: .default, title: "该看-1", handler: {(action,indexPath) -> Void in
+                let currentTV = self.TVs[indexPath.row]
+                currentTV.episodeToWatch! -= 1
+                _ = TVTable.instance.updateAnTV(updatedTV: currentTV)// update the database
+                self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
+                
+            })
+            
+            addOneEpisodeAction.backgroundColor = .green
+            minusOneEpisodeAction.backgroundColor = .blue
+            return [addOneEpisodeAction,minusOneEpisodeAction]
+        }
     }
-
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -137,14 +150,14 @@ class TrackTVTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        var itemToMove = TVs[sourceIndexPath.row]
+        let itemToMove = TVs[sourceIndexPath.row]
         TVs.remove(at: sourceIndexPath.row)
         TVs.insert(itemToMove, at: destinationIndexPath.row)
     }
-
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.

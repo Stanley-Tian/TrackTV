@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="daG-eh-sSn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="daG-eh-sSn">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -29,7 +29,7 @@
                                                 <constraint firstAttribute="width" secondItem="rVV-vs-AYy" secondAttribute="height" multiplier="1:1" id="EDF-Nm-Vcg"/>
                                             </constraints>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8N2-7x-wnN">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8N2-7x-wnN" userLabel="剧名 第X季">
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剧名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TS5-Yh-mvq">
                                                     <constraints>
@@ -46,34 +46,59 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kYx-5r-i5t">
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该看：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egb-O3-sl0">
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="52" id="7p8-YB-2lc"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第XX集" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Aq-Lx-jpK">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该看：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egb-O3-sl0">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="52" id="7p8-YB-2lc"/>
+                                                <constraint firstAttribute="height" constant="21" id="Dub-9R-ghd"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="52" id="MGj-Rh-SzT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="播出时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FB0-wf-BeH">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="MNc-7j-lYz"/>
+                                                <constraint firstAttribute="width" constant="87" id="s1x-8S-17Z"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每周日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxy-dn-tRR">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="52" id="UMP-pD-Ixn"/>
+                                                <constraint firstAttribute="height" constant="21" id="vS5-kx-tO5"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第XX集" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Aq-Lx-jpK">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="Ejm-Av-v0R"/>
+                                                <constraint firstAttribute="width" constant="74" id="cRd-cQ-nMX"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="1Aq-Lx-jpK" firstAttribute="bottom" secondItem="zPv-KK-YgM" secondAttribute="bottomMargin" id="9Zf-AU-qSB"/>
                                         <constraint firstItem="8N2-7x-wnN" firstAttribute="leading" secondItem="rVV-vs-AYy" secondAttribute="trailing" constant="8" symbolic="YES" id="FBu-0O-9Ia"/>
-                                        <constraint firstItem="kYx-5r-i5t" firstAttribute="top" secondItem="8N2-7x-wnN" secondAttribute="bottom" constant="8" symbolic="YES" id="Q5m-hE-O27"/>
-                                        <constraint firstItem="kYx-5r-i5t" firstAttribute="leading" secondItem="rVV-vs-AYy" secondAttribute="trailing" constant="8" symbolic="YES" id="UA0-FL-USE"/>
+                                        <constraint firstItem="Rxy-dn-tRR" firstAttribute="bottom" secondItem="zPv-KK-YgM" secondAttribute="bottomMargin" id="MXH-b9-1St"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="rVV-vs-AYy" secondAttribute="bottom" id="Vx5-ep-Dce"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="8N2-7x-wnN" secondAttribute="trailing" id="YMY-5e-Too"/>
+                                        <constraint firstItem="egb-O3-sl0" firstAttribute="leading" secondItem="rVV-vs-AYy" secondAttribute="trailing" constant="7.5" id="c0J-Bp-023"/>
                                         <constraint firstItem="rVV-vs-AYy" firstAttribute="leading" secondItem="zPv-KK-YgM" secondAttribute="leadingMargin" id="dsu-Yw-PCq"/>
+                                        <constraint firstItem="1Aq-Lx-jpK" firstAttribute="leading" secondItem="egb-O3-sl0" secondAttribute="trailing" constant="3" id="fKL-sF-MKs"/>
+                                        <constraint firstItem="FB0-wf-BeH" firstAttribute="leading" secondItem="1Aq-Lx-jpK" secondAttribute="trailing" constant="8" id="iGS-kh-MDZ"/>
                                         <constraint firstItem="rVV-vs-AYy" firstAttribute="top" secondItem="zPv-KK-YgM" secondAttribute="topMargin" id="kJN-6F-kZb"/>
                                         <constraint firstItem="8N2-7x-wnN" firstAttribute="top" secondItem="zPv-KK-YgM" secondAttribute="topMargin" id="mZG-zO-jS9"/>
-                                        <constraint firstAttribute="trailing" secondItem="kYx-5r-i5t" secondAttribute="trailing" constant="20" symbolic="YES" id="oMI-CR-r8I"/>
+                                        <constraint firstItem="FB0-wf-BeH" firstAttribute="bottom" secondItem="zPv-KK-YgM" secondAttribute="bottomMargin" id="npY-Fj-lJW"/>
+                                        <constraint firstItem="Rxy-dn-tRR" firstAttribute="leading" secondItem="FB0-wf-BeH" secondAttribute="trailing" constant="1" id="ttL-Nq-Q3n"/>
+                                        <constraint firstItem="egb-O3-sl0" firstAttribute="bottom" secondItem="zPv-KK-YgM" secondAttribute="bottomMargin" id="ybW-Tq-smo"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -81,6 +106,7 @@
                                     <outlet property="episodeToWatchLabel" destination="1Aq-Lx-jpK" id="fmE-j6-J7a"/>
                                     <outlet property="nameLabel" destination="TS5-Yh-mvq" id="24h-hC-wMU"/>
                                     <outlet property="seasonLabel" destination="HLp-HZ-3MX" id="fcq-vO-aT9"/>
+                                    <outlet property="showTimeLabel" destination="Rxy-dn-tRR" id="sO4-G6-AYO"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -139,7 +165,7 @@
                             </navigationBar>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="TDN-nO-Cn6">
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tz1-lp-xZP">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="tz1-lp-xZP" userLabel="剧名">
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剧名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eic-CV-JnB">
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -160,7 +186,7 @@
                                             <constraint firstItem="Eic-CV-JnB" firstAttribute="top" secondItem="tz1-lp-xZP" secondAttribute="top" id="JiV-Ar-la3"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="fBI-0t-w8A">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="fBI-0t-w8A" userLabel="第几季">
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第几季" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zt2-s1-E7u">
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -181,7 +207,7 @@
                                             <constraint firstAttribute="bottom" secondItem="Zt2-s1-E7u" secondAttribute="bottom" id="HUU-g0-H3R"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hFn-40-cAr">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="hFn-40-cAr" userLabel="该看第几集">
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="该看第几集" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCM-eG-7Ni">
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -202,14 +228,37 @@
                                             <constraint firstAttribute="bottom" secondItem="JCM-eG-7Ni" secondAttribute="bottom" id="lbc-6d-WwY"/>
                                         </constraints>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="RoF-OC-d6s" userLabel="每周播出时间">
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每周播出时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVi-dF-Xnm">
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NF9-C9-Bcy">
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <action selector="TVshowTimeEditDitEnd:" destination="Fua-J2-ZkH" eventType="editingDidEnd" id="SPH-dq-Sof"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="xVi-dF-Xnm" firstAttribute="top" secondItem="RoF-OC-d6s" secondAttribute="top" id="bOL-Vh-Qn5"/>
+                                            <constraint firstAttribute="bottom" secondItem="xVi-dF-Xnm" secondAttribute="bottom" id="eSY-oZ-eF8"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="tz1-lp-xZP" secondAttribute="trailing" id="0Xh-oz-BUB"/>
                                     <constraint firstItem="fBI-0t-w8A" firstAttribute="leading" secondItem="TDN-nO-Cn6" secondAttribute="leading" id="Hgs-5x-tWt"/>
                                     <constraint firstItem="tz1-lp-xZP" firstAttribute="top" secondItem="TDN-nO-Cn6" secondAttribute="top" id="MYB-wY-OrC"/>
+                                    <constraint firstItem="RoF-OC-d6s" firstAttribute="leading" secondItem="TDN-nO-Cn6" secondAttribute="leadingMargin" id="Nc2-MS-BCX"/>
                                     <constraint firstItem="hFn-40-cAr" firstAttribute="leading" secondItem="TDN-nO-Cn6" secondAttribute="leading" id="VJN-Ki-sZ5"/>
                                     <constraint firstItem="tz1-lp-xZP" firstAttribute="leading" secondItem="TDN-nO-Cn6" secondAttribute="leading" id="Z4C-UA-05A"/>
                                     <constraint firstAttribute="trailing" secondItem="fBI-0t-w8A" secondAttribute="trailing" id="a8k-Cf-Ahu"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="RoF-OC-d6s" secondAttribute="trailing" id="fxl-Sh-Xpd"/>
                                     <constraint firstAttribute="trailing" secondItem="hFn-40-cAr" secondAttribute="trailing" id="qvb-PI-uOs"/>
                                 </constraints>
                             </stackView>
