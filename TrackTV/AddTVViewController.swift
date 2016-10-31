@@ -9,14 +9,18 @@
 import UIKit
 
 class AddTVViewController: UIViewController,UIImagePickerControllerDelegate,
-UINavigationControllerDelegate {
+UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
     
     var newTV:TV!
+    var pickOption = ["未知","周一","周二","周三","周四","周五","周六","周日"]
+    var pickerView = UIPickerView()
+
 
     @IBOutlet weak var TVCoverImageView: UIImageView!
     @IBOutlet weak var TVNameTextField: UITextField!
     @IBOutlet weak var TVSeasonTextField: UITextField!
     @IBOutlet weak var TVEpisodeToWatchTextField: UITextField!
+    @IBOutlet weak var TVshowTimeTextField: UITextField!
     
     @IBAction func TVNameEditDidEnd(_ sender: UITextField) {
         self.newTV.name = sender.text
@@ -47,13 +51,36 @@ UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         newTV = TV(id:nil, name: "", season: 0, episodeToWatch: 0, cover: nil, showTime: nil)
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.plain, target: self, action: #selector(AddTVViewController.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        //let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(AddTVViewController.donePicker))
+        
+        toolBar.setItems([spaceButton, doneButton], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        
+        TVshowTimeTextField.inputView = pickerView
+        TVshowTimeTextField.inputAccessoryView = toolBar
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    func donePicker() {
+        
+        TVshowTimeTextField.resignFirstResponder()
+        
+    }
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         print("entering shouldPerformSegue")
         if identifier == "unwindSave" {
@@ -111,7 +138,7 @@ UINavigationControllerDelegate {
     }
 
 }
-
+// MARK: - imagePicker
 extension AddTVViewController{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage{
@@ -123,5 +150,26 @@ extension AddTVViewController{
         }
         // 收回图库选择界面
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+// MARK: - Pickerview
+
+extension AddTVViewController{
+    
+    @objc(numberOfComponentsInPickerView:) func numberOfComponents(in pickerView: UIPickerView) -> Int{
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        return pickOption.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickOption[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        TVshowTimeTextField.text = pickOption[row]
     }
 }

@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nfe-lh-qjf" id="zPv-KK-YgM">
-                                    <frame key="frameInset" width="375" height="90"/>
+                                    <frame key="frameInset" width="375" height="91"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rVV-vs-AYy">
@@ -290,6 +290,7 @@
                         <outlet property="TVEpisodeToWatchTextField" destination="CT2-80-I4M" id="sZm-HU-KhI"/>
                         <outlet property="TVNameTextField" destination="J3E-HI-Qyq" id="dnR-W8-skP"/>
                         <outlet property="TVSeasonTextField" destination="NBM-t0-O6X" id="aXb-aF-Heb"/>
+                        <outlet property="TVshowTimeTextField" destination="NF9-C9-Bcy" id="c2l-qK-EaB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQb-Qu-xSp" userLabel="First Responder" sceneMemberID="firstResponder"/>
