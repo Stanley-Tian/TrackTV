@@ -114,11 +114,32 @@ class TVTable:MainDatabase {
         return TVs
     }
     // MARK:UPDATE
-    func updateAnTV(updatedTV:TV) -> Bool{
+    func updateAnEpisode(updatedTV:TV) -> Bool{
         let TVToUpdate = tableTV.filter(id == updatedTV.id!)
         
         do {
             let update = TVToUpdate.update(episodeToWatch <- Int64(updatedTV.episodeToWatch!))
+            if try db!.run(update) > 0 {
+                return true
+            }else{
+                return false
+            }
+            
+        } catch {
+            print("更新数据失败")
+            return false
+        }
+    }
+    func updateAnTV(updatedTV:TV) -> Bool{
+        let TVToUpdate = tableTV.filter(id == updatedTV.id!)
+        
+        do {
+            let update = TVToUpdate.update([name <- updatedTV.name,
+                                            season <- Int64(updatedTV.season!),
+                                            episodeToWatch <- Int64(updatedTV.episodeToWatch!),
+                                            cover <- updatedTV.cover!,
+                                            showTime <- updatedTV.showTime
+                                            ])
             if try db!.run(update) > 0 {
                 return true
             }else{

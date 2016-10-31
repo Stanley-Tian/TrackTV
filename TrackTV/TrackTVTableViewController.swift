@@ -29,7 +29,7 @@ class TrackTVTableViewController: UITableViewController {
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
+        self.tableView.allowsSelectionDuringEditing = true
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         getTVs()
@@ -82,9 +82,13 @@ class TrackTVTableViewController: UITableViewController {
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if userEditing == true {
+            performSegue(withIdentifier: "editSegue", sender:TVs[indexPath.row])
+        }else{
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -118,13 +122,13 @@ class TrackTVTableViewController: UITableViewController {
             let addOneEpisodeAction = UITableViewRowAction(style: .default, title: "该看+1", handler: {(action,indexPath) -> Void in
                 let currentTV = self.TVs[indexPath.row]
                 currentTV.episodeToWatch! += 1
-                _ = TVTable.instance.updateAnTV(updatedTV: currentTV)// update the database
+                _ = TVTable.instance.updateAnEpisode(updatedTV: currentTV)// update the database
                 self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
             })
             let minusOneEpisodeAction = UITableViewRowAction(style: .default, title: "该看-1", handler: {(action,indexPath) -> Void in
                 let currentTV = self.TVs[indexPath.row]
                 currentTV.episodeToWatch! -= 1
-                _ = TVTable.instance.updateAnTV(updatedTV: currentTV)// update the database
+                _ = TVTable.instance.updateAnEpisode(updatedTV: currentTV)// update the database
                 self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.left)
                 
             })
@@ -162,6 +166,11 @@ class TrackTVTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "editSegue" {
+           let destinationController =  segue.destination as! AddTVViewController
+            destinationController.segueSource = "editSegue"
+            destinationController.newTV = sender as! TV
+        }
     }
     
     @IBAction func unwindFromSave(segue:UIStoryboardSegue){}

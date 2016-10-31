@@ -11,10 +11,12 @@ import UIKit
 class AddTVViewController: UIViewController,UIImagePickerControllerDelegate,
 UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
     
+    var segueSource:String?
     var newTV:TV!
     var pickOption = ["未知","周一","周二","周三","周四","周五","周六","周日"]
     var pickerView = UIPickerView()
 
+    @IBOutlet weak var topNavigationItem: UINavigationItem!
 
     @IBOutlet weak var TVCoverImageView: UIImageView!
     @IBOutlet weak var TVNameTextField: UITextField!
@@ -50,7 +52,22 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if segueSource == "editSegue"{
+            // newTV is already set
+            //self.navigationItem.title = "修改"
+            self.topNavigationItem.title = "修改"
+            //self.navigation
+            //title = "修改"
+            TVCoverImageView.image = newTV.cover
+            TVNameTextField.text = newTV.name
+            TVSeasonTextField.text = String(newTV.season!)
+            TVshowTimeTextField.text = newTV.showTime
+            TVEpisodeToWatchTextField.text = String(newTV.episodeToWatch!)
+        }else{
+        
         newTV = TV(id:nil, name: "", season: 0, episodeToWatch: 0, cover: nil, showTime: nil)
+        }
         
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -99,7 +116,11 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "unwindSave" {
+            if segueSource == "editSegue" {
+                TVTable.instance.updateAnTV(updatedTV: newTV)
+            }else{
             _ = TVTable.instance.addAnTV(tv: newTV)
+            }
             print("unwindFromSave------")
         }
         

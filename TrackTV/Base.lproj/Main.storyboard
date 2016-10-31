@@ -129,6 +129,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="editBarButtonItem" destination="pEd-GC-r2n" id="KtF-7x-b3D"/>
+                        <segue destination="Fua-J2-ZkH" kind="presentation" identifier="editSegue" id="xxl-f5-5wY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cy8-iG-u5k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,6 +292,7 @@
                         <outlet property="TVNameTextField" destination="J3E-HI-Qyq" id="dnR-W8-skP"/>
                         <outlet property="TVSeasonTextField" destination="NBM-t0-O6X" id="aXb-aF-Heb"/>
                         <outlet property="TVshowTimeTextField" destination="NF9-C9-Bcy" id="c2l-qK-EaB"/>
+                        <outlet property="topNavigationItem" destination="lhS-ef-xgY" id="SU7-4B-bLe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQb-Qu-xSp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -325,4 +327,7 @@
     <resources>
         <image name="image" width="60" height="60"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xxl-f5-5wY"/>
+    </inferredMetricsTieBreakers>
 </document>
