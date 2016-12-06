@@ -117,7 +117,7 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
         // Pass the selected object to the new view controller.
         if segue.identifier == "unwindSave" {
             if segueSource == "editSegue" {
-                TVTable.instance.updateAnTV(updatedTV: newTV)
+                _ = TVTable.instance.updateAnTV(updatedTV: newTV)
             }else{
             _ = TVTable.instance.addAnTV(tv: newTV)
             }
@@ -152,6 +152,10 @@ UINavigationControllerDelegate,UIPickerViewDataSource, UIPickerViewDelegate {
             alert.addAction(confirmAction)
             self.present(alert, animated: true, completion: nil)
             return false
+        }
+        
+        if self.newTV.cover == nil {
+            self.newTV.cover = self.TVCoverImageView.image
         }
         
         

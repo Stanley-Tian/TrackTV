@@ -16,6 +16,7 @@ class TV {
     let id:String?
     var cover:UIImage?
     var showTime:String?
+    var order:Int?
     
     init(id:String?, name:String, season:Int, episodeToWatch:Int, cover:UIImage?, showTime:String?) {
         self.name = name
@@ -38,6 +39,7 @@ class TVTable:MainDatabase {
     private var episodeToWatch = Expression<Int64>("episodeToWatch")
     private var cover = Expression<UIImage>("cover")
     private var showTime = Expression<String?>("showTime")
+    private var order = Expression<Int64?>("order")
     
     override func createTable() {
         do {
@@ -56,7 +58,10 @@ class TVTable:MainDatabase {
     // 升级表
     func updateTable(){
         do{
+            // add at 1.4 version
             try super.db!.run(tableTV.addColumn(showTime))
+            // add at 
+            try super.db!.run(tableTV.addColumn(order))
             //try super.db!.run(tableTV.addColumn(showTime))
             print("增加列数据成功")
         } catch {
@@ -66,21 +71,21 @@ class TVTable:MainDatabase {
     // - MARK:CRUD -
 
     // MARK:CREATE
-    func addAnTV(name:String, season:Int64, episodeToWatch:Int64, cover:UIImage) -> Int64?{
-        do {
-            let insert = tableTV.insert(self.id <- UUID().uuidString,
-                                        self.name <- name,
-                                        self.season <- season,
-                                        self.episodeToWatch <- episodeToWatch,
-                                        self.cover <- cover)
-            let rowid = try db!.run(insert)
-            
-            return rowid
-        } catch {
-            print("Insert failed")
-            return nil
-        }
-    }
+//    func addAnTV(name:String, season:Int64, episodeToWatch:Int64, cover:UIImage) -> Int64?{
+//        do {
+//            let insert = tableTV.insert(self.id <- UUID().uuidString,
+//                                        self.name <- name,
+//                                        self.season <- season,
+//                                        self.episodeToWatch <- episodeToWatch,
+//                                        self.cover <- cover)
+//            let rowid = try db!.run(insert)
+//            
+//            return rowid
+//        } catch {
+//            print("Insert failed")
+//            return nil
+//        }
+//    }
     func addAnTV(tv:TV) -> Int64?{
         do {
             let insert = tableTV.insert(self.id <- UUID().uuidString,
@@ -103,8 +108,8 @@ class TVTable:MainDatabase {
         var TVs = [TV]()
         
         do {
-            for row in try db!.prepare(self.tableTV){
-           //     TVs.append(TV(id: row[id], name: row[name], season: Int(row[season]), episodeToWatch: Int(row[episodeToWatch]), cover: row.get(cover)), showTime: row[showTime] )
+            for row in try db!.prepare(self.tableTV.order(order)){
+
                 TVs.append(TV(id: row[id], name: row[name], season: Int(row[season]), episodeToWatch: Int(row[episodeToWatch]), cover: row.get(cover), showTime: row[showTime] ))
 
             }
@@ -151,6 +156,8 @@ class TVTable:MainDatabase {
             return false
         }
     }
+    
+    
     /*
     func updateAnTV(byId TVId:String, newName:String, newBrief:String, newPortrait:UIImage, newImage:UIImage) -> Bool{
         let TVToUpdate = tableTV.filter(id == TVId)

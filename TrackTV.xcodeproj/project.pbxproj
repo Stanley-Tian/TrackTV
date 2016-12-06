@@ -10,6 +10,7 @@
 		1B5326471DB5FA82009232FB /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5326461DB5FA82009232FB /* TV.swift */; };
 		1B5326491DB61036009232FB /* MainDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5326481DB61036009232FB /* MainDatabase.swift */; };
 		1B53264E1DB638E0009232FB /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B53264D1DB638E0009232FB /* Tools.swift */; };
+		1B9838771DC7465300A65F20 /* TVOrders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B9838761DC7465300A65F20 /* TVOrders.swift */; };
 		1BEBEC151DB5DDC5001BA2E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BEBEC141DB5DDC5001BA2E4 /* AppDelegate.swift */; };
 		1BEBEC1A1DB5DDC5001BA2E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBEC181DB5DDC5001BA2E4 /* Main.storyboard */; };
 		1BEBEC1C1DB5DDC5001BA2E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1BEBEC1B1DB5DDC5001BA2E4 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 		1B5326461DB5FA82009232FB /* TV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
 		1B5326481DB61036009232FB /* MainDatabase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainDatabase.swift; sourceTree = "<group>"; };
 		1B53264D1DB638E0009232FB /* Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		1B9838761DC7465300A65F20 /* TVOrders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVOrders.swift; sourceTree = "<group>"; };
 		1BEBEC111DB5DDC5001BA2E4 /* TrackTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrackTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1BEBEC141DB5DDC5001BA2E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1BEBEC191DB5DDC5001BA2E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -55,6 +57,7 @@
 			children = (
 				1B5326481DB61036009232FB /* MainDatabase.swift */,
 				1B5326461DB5FA82009232FB /* TV.swift */,
+				1B9838761DC7465300A65F20 /* TVOrders.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			files = (
 				1BEBEC271DB5DF6D001BA2E4 /* TrackTVTableViewController.swift in Sources */,
 				1BEBEC291DB5E502001BA2E4 /* TrackTVTableViewCell.swift in Sources */,
+				1B9838771DC7465300A65F20 /* TVOrders.swift in Sources */,
 				1BEBEC2B1DB5E530001BA2E4 /* AddTVViewController.swift in Sources */,
 				1B5326491DB61036009232FB /* MainDatabase.swift in Sources */,
 				1B5326471DB5FA82009232FB /* TV.swift in Sources */,
@@ -384,7 +388,7 @@
 				INFOPLIST_FILE = TrackTV/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tmt.tv-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tmt.tv2-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -402,7 +406,7 @@
 				INFOPLIST_FILE = TrackTV/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tmt.tv-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tmt.tv2-test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -14,16 +14,21 @@ class TrackTVTableViewController: UITableViewController {
     var userEditing = false
     @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
     @IBAction func startEditing(_ sender: UIBarButtonItem) {       
-        if self.tableView.isEditing == true {
+        if self.tableView.isEditing == true {// 点击了完成按钮
             editBarButtonItem.title = "编辑"
             self.tableView.setEditing(false, animated: true)
             userEditing = false
-        }else {
+        }else {// 点击了编辑按钮
             editBarButtonItem.title = "完成"
             self.tableView.setEditing(true, animated: true)
             userEditing = true
         }
     }
+    
+    private func updateTVOrders(){
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -162,10 +167,8 @@ class TrackTVTableViewController: UITableViewController {
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
         if segue.identifier == "editSegue" {
            let destinationController =  segue.destination as! AddTVViewController
             destinationController.segueSource = "editSegue"

@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--美美爱追剧-->
+        <!--极简追剧-->
         <scene sceneID="4gG-in-fls">
             <objects>
                 <tableViewController id="uFR-tn-0tI" customClass="TrackTVTableViewController" customModule="TrackTV" customModuleProvider="target" sceneMemberID="viewController">
@@ -115,7 +115,7 @@
                             <outlet property="delegate" destination="uFR-tn-0tI" id="VLr-Sj-yCo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="美美爱追剧" id="NtG-xd-QdY">
+                    <navigationItem key="navigationItem" title="极简追剧" id="NtG-xd-QdY">
                         <barButtonItem key="leftBarButtonItem" title="编辑" style="plain" id="pEd-GC-r2n">
                             <connections>
                                 <action selector="startEditing:" destination="uFR-tn-0tI" id="p7i-i6-kgb"/>
